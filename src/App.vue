@@ -1,26 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <ToDo></ToDo>
+    <h1>To Do App</h1>
+    <CreateTodo />
   </div>
 </template>
 
 <script>
-import ToDo from "./components/ToDo.vue";
-
+import CreateTodo from "./components/CreateTodo.vue";
 export default {
-  name: "App",
   components: {
-    ToDo,
+    CreateTodo,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background: rgb(230, 219, 219);
+}
+h1 {
   text-align: center;
+  color: blue;
 }
 </style>

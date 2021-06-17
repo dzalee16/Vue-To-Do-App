@@ -1,48 +1,38 @@
 <template>
-  <div class="list-of-item">
+  <div class="list-items">
     <ul>
-      <li v-for="(todo, index) in todos" :key="index">
-        {{ todo }}
-        <button @click="removeTodo(index)">Remove</button>
-      </li>
+      <Todo v-for="todo in todos" :key="todo.id" :todo="todo"></Todo>
     </ul>
   </div>
 </template>
 
 <script>
+import Todo from "./Todo";
+import * as types from "../store/types";
 export default {
-  props: {
-    todos: {
-      type: Array,
-    },
+  components: {
+    Todo,
   },
-  methods: {
-    removeTodo(id) {
-      this.todos.splice(id, 1);
+  computed: {
+    todos() {
+      return this.$store.getters[types.TODOS];
     },
   },
 };
 </script>
 
-<style>
-.list-of-item {
-  border: 1px solid green;
-  width: 50%;
-  margin: 50px auto;
+<style scoped>
+.list-items {
+  border: 1px solid gold;
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 ul {
   margin: 0;
   padding: 0;
-  list-style-type: none;
-  height: 500px;
-  overflow-y: auto;
-}
-
-li {
-  border: 1px solid blue;
-  width: 90%;
-  margin: 5px auto;
-  padding: 8px;
+  list-style: none;
+  width: 100%;
 }
 </style>
